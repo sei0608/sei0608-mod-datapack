@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>データパック配布ページ | sei0608 の Minecraft 配布サイト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="sei0608 が制作した Minecraft データパックの配布ページ。タグ検索・対応バージョン検索・バージョン履歴に対応。">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>データパック配布ページ</h1>
+    <nav>
+      <ul>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/mods/">Mod</a></li>
+        <li><a href="/datapacks/">データパック</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 検索フォーム -->
+    <section id="search">
+      <h2>検索</h2>
+
+      <label>タグで検索：</label>
+      <input type="text" id="tag" placeholder="utility, combat など">
+
+      <label>Minecraft バージョン：</label>
+      <input type="text" id="mc_version" placeholder="1.21.1 など">
+
+      <button onclick="loadPacks()">検索する</button>
+    </section>
+
+    <hr>
+
+    <!-- 一覧表示 -->
+    <section id="list">
+      <h2>データパック一覧</h2>
+      <p>検索結果がここに表示されます。</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; sei0608 / Minecraft Datapack Distribution</p>
+  </footer>
+
+  <!-- JSON 読み込み & レンダリング -->
+  <script>
+    async function loadPacks() {
+      const res = await fetch("data.json");
+      const packs = await res.json();
+
+      const tag = document.getElementById("tag").value.trim();
+      const mcVersion = document.getElementById("mc_version").value.trim();
+
+      const filtered = packs.filter(p =>
+        (tag === "" || p.tags.includes(tag)) &&
+        (mcVersion === "" || p.versions.some(v => v.mc_version === mcVersion))
+      );
+
+      render(filtered);
+    }
+
+    function render(list) {
+      const container = document.getElementById("list");
+      container.innerHTML = "<h2>データパック一覧</h2>";
+
+      if (list.length === 0) {
+        container.innerHTML += "<p>該当するデータパックがありません。</p>";
+        return;
+      }
+
+      list.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "pack-card";
+
+        div.innerHTML = `
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <p><strong>Tags:</strong> ${p.tags.join(", ")}</p>
+
+          <h4>バージョン履歴</h4>
+          <ul>
+            ${p.versions.map(v => `<li>${v.mc_version} - <a href="${v.file}">${v.version}</a></li>`).join("")}
+          </ul>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+    // 初期表示
+    loadPacks();
+  </script>
+
+</body>
+</html>
