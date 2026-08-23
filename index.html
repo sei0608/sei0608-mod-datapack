@@ -2,9 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Mod 配布ページ | sei0608の Minecraft Mod 配布サイト</title>
+  <title>sei0608の Minecraft Mod / データパック配布サイト</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="sei0608が制作した Minecraft Mod の配布ページ。タグ検索・ローダー検索・バージョン履歴に対応。">
+  <meta name="description" content="sei0608が制作した Minecraft 用 Mod とデータパックの配布サイトです。バージョン履歴・タグ検索・ローダー別で探せます。">
   <style>
   body {
     background-color: #000000;
@@ -43,103 +43,100 @@
   nav li {
     display: inline;
   }
-  </style>
+</style>
 </head>
-
 <body>
   <header>
-    <h1>Mod 配布ページ</h1>
+    <h1>sei0608の Minecraft Mod / データパック配布サイト</h1>
     <nav>
       <ul>
         <li><a href="/sei0608-mod-datapack/">ホーム</a></li>
-        <li><a href="/sei0608-mod-datapack/mods/">Mod</a></li>
-        <li><a href="/sei0608-mod-datapack/datapacks/">データパック</a></li>
+        <li><a href="/sei0608-mod-datapack/mods/">Mod 配布ページ</a></li>
+        <li><a href="/sei0608-mod-datapack/datapacks/">データパック配布ページ</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-
-    <!-- 検索フォーム -->
-    <section id="search">
-      <h2>検索</h2>
-      <label>タグで検索：</label>
-      <input type="text" id="tag" placeholder="combat, utility など">
-
-      <label>Mod ローダー：</label>
-      <select id="loader">
-        <option value="">すべて</option>
-        <option value="Fabric">Fabric</option>
-        <option value="Forge">Forge</option>
-        <option value="NeoForge">NeoForge</option>
-      </select>
-
-      <button onclick="loadMods()">検索する</button>
+    <section id="about-site">
+      <h2>サイトについて</h2>
+      <p>
+        このサイトは、sei0608が制作した <strong>Minecraft 用の Mod とデータパックを配布する専用ページ</strong>です。<br>
+        すべて自作のコンテンツであり、品質・動作・アップデートを継続的に管理しています。
+      </p>
+      <p>
+        Mod・データパックは、Minecraft の遊び方を拡張し、より深い体験を提供するために制作しています。<br>
+        戦闘システム、便利機能、ゲーム性の強化など、幅広いジャンルを扱っています。
+      </p>
     </section>
 
-    <hr>
-
-    <!-- 一覧表示 -->
-    <section id="list">
-      <h2>Mod 一覧</h2>
-      <p>検索結果がここに表示されます。</p>
+    <section id="about-content">
+      <h2>配布物について</h2>
+      <ul>
+        <li>
+          <strong>バージョン履歴</strong><br>
+          過去のバージョンを含め、すべてダウンロード可能です。
+        </li>
+        <li>
+          <strong>対応バージョン</strong><br>
+          Minecraft の対応バージョンを明記しています。
+        </li>
+        <li>
+          <strong>Mod ローダー</strong><br>
+          Fabric / Forge / NeoForge など、必要なローダーを記載しています。
+        </li>
+        <li>
+          <strong>タグ検索</strong><br>
+          機能・ジャンル・対応環境などのタグで絞り込みができます。
+        </li>
+      </ul>
     </section>
 
+    <section id="categories">
+      <h2>カテゴリ</h2>
+      <p>このサイトでは、配布物を以下のカテゴリに分けています。</p>
+      <ul>
+        <li>
+          <strong>Mod 配布ページ</strong><br>
+          ゲームに新要素を追加する拡張コンテンツ。<br>
+          <a href="/sei0608-mod-datapack/mods/">Mod 一覧を見る</a>
+        </li>
+        <li>
+          <strong>データパック配布ページ</strong><br>
+          バニラ環境を拡張する軽量コンテンツ。<br>
+          <a href="/sei0608-mod-datapack/datapacks/">データパック一覧を見る</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="updates">
+      <h2>更新情報</h2>
+      <p>
+        新しい Mod やデータパック、既存コンテンツのアップデートは随時追加していきます。<br>
+        更新履歴は各ページのバージョン一覧から確認できます。
+      </p>
+    </section>
+
+    <section id="author">
+      <h2>作者について</h2>
+      <p>
+        このサイトのコンテンツはすべてsei0608が制作しています。<br>
+        Minecraft のデータパック制作、Mod 開発、コマンド・関数・predicate の構築を得意とし、<br>
+        より楽しく、より深く遊べるコンテンツを目指しています。
+      </p>
+    </section>
+
+    <section id="license">
+      <h2>ライセンス</h2>
+      <p>
+        配布物の利用規約・ライセンスは各ページに記載しています。<br>
+        二次配布は禁止ですが、動画・配信での利用は自由です。
+      </p>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; sei0608 / Minecraft Mod 配布サイト</p>
+    <p>&copy; sei0608 / Minecraft Mod &amp; Datapack Site</p>
   </footer>
-
-  <!-- JSON 読み込み & レンダリング -->
-  <script>
-    async function loadMods() {
-      const res = await fetch("data.json");
-      const mods = await res.json();
-
-      const tag = document.getElementById("tag").value.trim();
-      const loader = document.getElementById("loader").value;
-
-      const filtered = mods.filter(m =>
-        (tag === "" || m.tags.includes(tag)) &&
-        (loader === "" || m.loader === loader)
-      );
-
-      render(filtered);
-    }
-
-    function render(list) {
-      const container = document.getElementById("list");
-      container.innerHTML = "<h2>Mod 一覧</h2>";
-
-      if (list.length === 0) {
-        container.innerHTML += "<p>該当する Mod がありません。</p>";
-        return;
-      }
-
-      list.forEach(m => {
-        const div = document.createElement("div");
-        div.className = "mod-card";
-
-        div.innerHTML = `
-          <h3>${m.name}</h3>
-          <p>${m.description}</p>
-          <p><strong>Tags:</strong> ${m.tags.join(", ")}</p>
-          <p><strong>Loader:</strong> ${m.loader}</p>
-
-          <h4>バージョン履歴</h4>
-          <ul>
-            ${m.versions.map(v => `<li><a href="${v.file}">${v.version}</a></li>`).join("")}
-          </ul>
-        `;
-
-        container.appendChild(div);
-      });
-    }
-
-    // 初期表示
-    loadMods();
-  </script>
-
 </body>
 </html>
