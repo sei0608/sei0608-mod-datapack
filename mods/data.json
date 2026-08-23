@@ -2,7 +2,7 @@
   {
     "id": "example_mod",
     "name": "Example Combat Mod",
-    "description": "戦闘システムを拡張する Fabric 用 Mod。",
+    "description": "戦闘システムを拡張する Fabric・forge 用 Mod。",
     "tags": ["combat", "weapon", "fabric"],
     "loader": "Fabric",
     "versions": [
