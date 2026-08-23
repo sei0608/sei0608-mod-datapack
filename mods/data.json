@@ -1,0 +1,39 @@
+[
+  {
+    "id": "example_mod",
+    "name": "Example Combat Mod",
+    "description": "戦闘システムを拡張する Fabric 用 Mod。",
+    "tags": ["combat", "weapon", "fabric"],
+    "loader": "Fabric",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "mc_version": "1.21.1",
+        "file": "files/example_mod/v1.0.0.zip",
+        "release_date": "2024-01-01"
+      },
+      {
+        "version": "1.1.0",
+        "mc_version": "1.21.1",
+        "file": "files/example_mod/v1.1.0.zip",
+        "release_date": "2024-02-10"
+      }
+    ]
+  },
+
+  {
+    "id": "utility_mod",
+    "name": "Utility Expansion",
+    "description": "便利機能を追加する Forge 用 Mod。",
+    "tags": ["utility", "forge", "quality_of_life"],
+    "loader": "Forge",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "mc_version": "1.20.4",
+        "file": "files/utility_mod/v1.0.0.zip",
+        "release_date": "2024-03-15"
+      }
+    ]
+  }
+]
