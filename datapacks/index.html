@@ -52,8 +52,8 @@
     <nav>
       <ul>
         <li><a href="/sei0608-mod-datapack/">ホーム</a></li>
-        <li><a href="/sei0608-mod-datapack/mods/">Mod 配布ページ</a></li>
-        <li><a href="/sei0608-mod-datapack/datapacks/">データパック配布ページ</a></li>
+        <li><a href="/sei0608-mod-datapack/mods/">Mod</a></li>
+        <li><a href="/sei0608-mod-datapack/datapacks/">データパック</a></li>
       </ul>
     </nav>
   </header>
@@ -118,7 +118,7 @@
         div.className = "pack-card";
 
         div.innerHTML = `
-          <h3>${p.name}</h3>
+          <h3><a href="detail.html?id=${p.id}">${p.name}</a></h3>
           <p>${p.description}</p>
           <p><strong>Tags:</strong> ${p.tags.join(", ")}</p>
 
