@@ -1,7 +1,7 @@
 [
   {
     "id": "inc_enchant",
-    "name": "いんくのエンチャントパック",
+    "name": "いんくのエンチャントパックの再現",
     "description": "エンチャント データパック",
     "tags": ["enchant", "再現"],
     "versions": [
