@@ -3,7 +3,7 @@
     "id": "inc_enchant",
     "name": "いんくのエンチャントパック",
     "description": "エンチャント データパック",
-    "tags": ["enchant", "26.1.2"],
+    "tags": ["enchant", "再現"],
     "versions": [
       {
         "version": "1.0.0",
