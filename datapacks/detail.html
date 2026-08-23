@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>データパック詳細 | sei0608 の Minecraft 配布サイト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="sei0608 が制作した Minecraft データパックの詳細ページ。バージョン履歴・説明・タグ・対応バージョンを掲載。">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>データパック詳細</h1>
+    <nav>
+      <ul>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/mods/">Mod</a></li>
+        <li><a href="/datapacks/">データパック</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="content">
+      <h2 id="pack-name">読み込み中...</h2>
+      <p id="pack-description"></p>
+
+      <h3>タグ</h3>
+      <p id="pack-tags"></p>
+
+      <h3>バージョン履歴</h3>
+      <ul id="pack-versions"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; sei0608 / Minecraft Datapack Distribution</p>
+  </footer>
+
+  <script>
+    // URL の ?id=example_pack を取得
+    const params = new URLSearchParams(window.location.search);
+    const packId = params.get("id");
+
+    async function loadPack() {
+      const res = await fetch("data.json");
+      const packs = await res.json();
+
+      const pack = packs.find(p => p.id === packId);
+
+      if (!pack) {
+        document.getElementById("content").innerHTML =
+          "<p>指定されたデータパックが見つかりません。</p>";
+        return;
+      }
+
+      document.getElementById("pack-name").textContent = pack.name;
+      document.getElementById("pack-description").textContent = pack.description;
+      document.getElementById("pack-tags").textContent = pack.tags.join(", ");
+
+      const versionList = document.getElementById("pack-versions");
+      versionList.innerHTML = pack.versions
+        .map(v => `<li>${v.mc_version} - <a href="${v.file}">${v.version}</a></li>`)
+        .join("");
+    }
+
+    loadPack();
+  </script>
+
+</body>
+</html>
