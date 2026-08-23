@@ -1,0 +1,16 @@
+[
+  {
+    "id": "inc_enchant",
+    "name": "いんくのエンチャントパック",
+    "description": "エンチャント データパック",
+    "tags": ["enchant", "26.1.2"],
+    "versions": [
+      {
+        "version": "1.0.0",
+        "mc_version": "26.1.2",
+        "file": "files/inc_enchant/v1.0.0.zip",
+        "release_date": "2026-08-23"
+      }
+    ]
+  }
+]
